@@ -11,3 +11,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+# Ignore third-party code
+vendor/bundle/
