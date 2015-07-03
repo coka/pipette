@@ -9,3 +9,9 @@
     <%= link_to "<button type=\"button\">Sign out</button>".html_safe, destroy_user_session_path, :method => :delete %>
   <% end %>
 <% end %>
+<h2>Snippets</h2>
+<ul>
+<% @snippets.each do |snippet| %>
+  <li><%= snippet.title %></li>
+<% end %>
+</ul>
