@@ -1,1 +1,11 @@
 <h1>Hello, world!</h1>
+<% if !user_signed_in? %>
+  <%= link_to "<button type=\"button\">Register</button>".html_safe, new_user_registration_path %>
+  <%= link_to "<button type=\"button\">Sign in</button>".html_safe, new_user_session_path %>
+<% else %>
+  <% if Rails.env.test? %>
+    <%= link_to "<button type=\"button\">Sign out</button>".html_safe, destroy_user_session_path %>
+  <% else %>
+    <%= link_to "<button type=\"button\">Sign out</button>".html_safe, destroy_user_session_path, :method => :delete %>
+  <% end %>
+<% end %>
