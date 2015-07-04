@@ -8,6 +8,12 @@
 </head>
 <body>
 
+<% if notice %>
+  <div class="alert alert-success" role="alert"><%= notice %></div>
+<% elsif alert %>
+  <div class="alert alert-danger" role="alert"><%= alert %></div>
+<% end %>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
 
@@ -31,10 +37,17 @@
   </div>
 </nav>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-
 <%= yield %>
+
+<script>
+ $(document).ready(function() {
+  setTimeout(function() {
+    $(".alert").fadeOut("slow", function() {
+      $(this).remove();
+    });
+  }, 3000);
+ });
+</script>
 
 </body>
 </html>
