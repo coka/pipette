@@ -13,7 +13,7 @@
           <%= snippet.title %>
           <br>
           <% if snippet.user %>
-            <div style="color: gray"><%= snippet.user.email %></div>
+            <div style="color: gray"><%= snippet.user.username %></div>
           <% end %>
         </div>
         <% if user_signed_in? %>
