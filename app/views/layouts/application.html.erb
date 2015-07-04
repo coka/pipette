@@ -1,12 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>RailsApp</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>rails-app</title>
+  <%= stylesheet_link_tag "application", media: "all" %>
+  <%= javascript_include_tag "application"  %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <%= link_to "rails-app", root_path, class: "navbar-brand" %>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <% if user_signed_in? %>
+        <% if Rails.env.test? %>
+          <li><%= link_to "Sign out", destroy_user_session_path %></li>
+        <% else %>
+          <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% end %>
+      <% else %>
+        <li><%= link_to "Register", new_user_registration_path %></li>
+        <li><%= link_to "Sign in", new_user_session_path %></li>
+      <% end %>
+    </ul>
+
+  </div>
+</nav>
 
 <p class="notice"><%= notice %></p>
 <p class="alert"><%= alert %></p>
