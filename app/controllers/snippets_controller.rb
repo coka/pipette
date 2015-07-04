@@ -10,11 +10,11 @@ class SnippetsController < ApplicationController
   end
 
   def new
-    @snippet = Snippet.new
+    @snippet = current_user.snippets.build
   end
 
   def create
-    @snippet = Snippet.new(snippet_params)
+    @snippet = current_user.snippets.build(snippet_params)
     @snippet.save
     redirect_to snippets_path
   end
