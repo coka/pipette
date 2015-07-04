@@ -10,7 +10,11 @@
     <div class="panel panel-default">
       <div class="panel-heading clearfix">
         <div class="panel-title pull-left">
-          <%= snippet.title%>
+          <%= snippet.title %>
+          <br>
+          <% if snippet.user %>
+            <div style="color: gray"><%= snippet.user.email %></div>
+          <% end %>
         </div>
         <% if user_signed_in? %>
           <div class="btn-group pull-right">

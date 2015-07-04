@@ -13,3 +13,4 @@ Feature: Snippets
     When I create a snippet titled "MySnippet"
     And I refresh
     Then I should see "MySnippet"
+    And I should see my email
