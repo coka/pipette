@@ -7,6 +7,8 @@ class SnippetsController < ApplicationController
   end
 
   def show
+    @comment = @snippet.comments.build
+    @comments = @snippet.comments.all
   end
 
   def new

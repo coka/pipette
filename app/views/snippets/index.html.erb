@@ -23,7 +23,11 @@
         <% end %>
       </div>
       <div class="panel-body"><%= snippet.content %></div>
-      <div class="panel-footer">COMMENTS PLACEHOLDER</div>
+      <div class="panel-footer">
+        <% snippet.comments.each do |comment| %>
+         <div><%= comment.content %></div>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>
