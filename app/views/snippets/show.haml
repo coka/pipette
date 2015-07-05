@@ -1,0 +1,21 @@
+.container
+  .panel.panel-default
+    .panel-heading
+      = @snippet.title
+    .panel-body
+      = @snippet.content
+    .panel-footer#comment_box
+      - @comments.each do |comment|
+        %div
+          = comment.content
+
+.container
+  - if user_signed_in?
+    %h3 Join the discussion!
+    = form_for [@snippet, @comment], remote: true do |f|
+      .form-group
+        = f.text_area :content, :class => "form-control"
+      .form-group
+        = f.submit "Post comment", :class => "btn btn-primary"
+  - else
+    %h3 Sign in to post a comment.

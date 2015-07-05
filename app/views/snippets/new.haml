@@ -1,0 +1,10 @@
+.container
+  %h1 Create a snippet
+  = form_for @snippet do |f|
+    .form-group
+      %label Title
+      = f.text_field :title, :class => "form-control"
+    .form-group
+      = f.text_area :content, :class => "form-control", :rows => 8
+    .form-group
+      = f.submit "Create", :class => "btn btn-default"
