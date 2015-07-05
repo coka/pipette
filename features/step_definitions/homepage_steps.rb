@@ -1,9 +1,9 @@
 def define_visitor
-  @visitor = { email: "visitor@example.com", password: "password"}
+  @visitor = { username: "visitor", email: "visitor@example.com", password: "password"}
 end
 
 def define_user
-  @user = { email: "user@example.com", password: "password" }
+  @user = { username: "user", email: "user@example.com", password: "password" }
 end
 
 def create_user
@@ -12,13 +12,14 @@ end
 
 def sign_in
   click_link "Sign in"
-  fill_in "user_email", :with => @user[:email]
+  fill_in "user_login", :with => @user[:username]
   fill_in "user_password", :with => @user[:password]
   click_button "Sign in"
 end
 
 def register
   click_link "Register"
+  fill_in "user_username", :with => @visitor[:username]
   fill_in "user_email", :with => @visitor[:email]
   fill_in "user_password", :with => @visitor[:password]
   fill_in "user_password_confirmation", :with => @visitor[:password]
