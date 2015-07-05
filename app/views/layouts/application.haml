@@ -2,7 +2,7 @@
 %html
   %head
     %meta{"charset" => "UTF-8"}/
-    %title rails-app
+    %title Pipette
     = stylesheet_link_tag "application", media: "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -19,7 +19,7 @@
       .container-fluid
 
         .navbar-header
-          = link_to "rails-app", root_path, class: "navbar-brand"
+          = link_to "Pipette", root_path, class: "navbar-brand"
 
         %ul.nav.navbar-nav.navbar-right
           - if user_signed_in?

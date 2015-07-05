@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: rails-app_development
+  database: pipette_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: rails-app
+  username: pipette
 
   # The password associated with the postgres role (username).
   password: password
@@ -57,8 +57,8 @@ development:
 # Do not set this db to the same as development or production.
 test: &test
   <<: *default
-  database: rails-app_test
-  username: rails-app
+  database: pipette_test
+  username: pipette
   password: password
 
 # As with config/secrets.yml, you never want to store sensitive information,
@@ -82,9 +82,9 @@ test: &test
 #
 production:
   <<: *default
-  database: rails-app_production
-  username: rails-app
-  password: <%= ENV['RAILS-APP_DATABASE_PASSWORD'] %>
+  database: pipette_production
+  username: pipette
+  password: <%= ENV['PIPETTE_DATABASE_PASSWORD'] %>
 
 cucumber:
   <<: *test
