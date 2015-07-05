@@ -16,6 +16,6 @@ Then(/^I should see "(.*?)"$/) do |content|
   expect(page).to have_content(content)
 end
 
-Then(/^I should see my email$/) do
-  expect(page).to have_content(@user[:email])
+Then(/^I should see my username$/) do
+  expect(page).to have_content(@user[:username])
 end
