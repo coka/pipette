@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-heading"><%= @snippet.title %></div>
     <div class="panel-body"><%= @snippet.content %></div>
-    <div class="panel-footer">
+    <div class="panel-footer", id="comment_box">
       <% @comments.each do |comment| %>
         <div><%= comment.content %></div>
       <% end %>
@@ -13,7 +13,7 @@
 <div class="container">
   <% if user_signed_in? %>
     <h3>Join the discussion!</h3>
-    <%= form_for [@snippet, @comment] do |f| %>
+    <%= form_for [@snippet, @comment], remote: true do |f| %>
       <div class="form-group">
         <%= f.text_area :content, :class => "form-control" %>
       </div>

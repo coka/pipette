@@ -14,7 +14,11 @@ class CommentsController < ApplicationController
   def create
     @comment = @snippet.comments.build(comment_params)
     @comment.save
-    redirect_to snippet_path(@snippet)
+
+    respond_to do |format|
+      format.html { redirect_to snippet_path(@snippet) }
+      format.js
+    end
   end
 
   def edit
