@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to snippet_path(@snippet) }
-      format.js
+      format.js { render :layout => false }
     end
   end
 

@@ -1,0 +1,44 @@
+!!!
+%html
+  %head
+    %meta{"charset" => "UTF-8"}/
+    %title rails-app
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+
+    - if notice
+      .alert.alert-success{"role" => "alert"}
+        = notice
+    - if alert
+      .alert.alert-danger{"role" => "alert"}
+        = alert
+
+    %nav.navbar.navbar-default
+      .container-fluid
+
+        .navbar-header
+          = link_to "rails-app", root_path, class: "navbar-brand"
+
+        %ul.nav.navbar-nav.navbar-right
+          - if user_signed_in?
+            - if Rails.env.test?
+              %li= link_to "Sign out", destroy_user_session_path
+            - else
+              %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+          - else
+            %li= link_to "Register", new_user_registration_path
+            %li= link_to "Sign in", new_user_session_path
+
+
+    = yield
+
+    :javascript
+      $(document).ready(function() {
+        setTimeout(function() {
+          $(".alert").fadeOut("slow", function() {
+            $(this).remove();
+          });
+        }, 3000);
+      });

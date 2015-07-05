@@ -1,0 +1,23 @@
+- if user_signed_in?
+  .container
+    = button_to "New snippet", new_snippet_path, :method => :get, :class => "btn btn-primary"
+    %br
+
+.container
+  - @snippets.each do |snippet|
+    .panel.panel-default
+      .panel-heading.clearfix
+        .panel-title.pull-left
+          = snippet.title
+          %br/
+          - if snippet.user
+            = snippet.user.username
+        - if user_signed_in?
+          .btn-group.pull-right
+            = button_to "Edit", edit_snippet_path(snippet.id), :method => :get, :class => "btn btn-default"
+      .panel-body
+        = snippet.content
+      .panel-footer
+        - snippet.comments.each do |comment|
+          %div
+            = comment.content
