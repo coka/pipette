@@ -13,6 +13,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @snippet.comments.build(comment_params)
+    @comment.user_id = current_user.id
     @comment.save
 
     respond_to do |format|
