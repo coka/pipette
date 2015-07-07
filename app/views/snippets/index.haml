@@ -8,7 +8,7 @@
     .panel.panel-default
       .panel-heading.clearfix
         .panel-title.pull-left
-          = snippet.title
+          = link_to snippet.title, snippet_path(snippet.id)
           %br/
           - if snippet.user
             = snippet.user.username
@@ -20,4 +20,5 @@
       .panel-footer
         - snippet.comments.each do |comment|
           %div
+            %label= comment.user.username
             = comment.content
