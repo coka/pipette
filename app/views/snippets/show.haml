@@ -1,7 +1,15 @@
 .container
   .panel.panel-default
-    .panel-heading
-      = @snippet.title
+    .panel-heading.clearfix
+      .panel-title.pull-left
+        = @snippet.title
+        %br/
+        - if @snippet.user
+          = @snippet.user.username
+      -if user_signed_in?
+        .btn-group.pull-right
+          = link_to "Edit", edit_snippet_path(@snippet), :class => "btn btn-default"
+          = link_to "Destroy", snippet_path(@snippet), :method => :delete, :class => "btn btn-danger"
     .panel-body
       = @snippet.content
     .panel-footer#comment_box
