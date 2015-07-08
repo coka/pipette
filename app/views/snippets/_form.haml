@@ -1,0 +1,10 @@
+= form_for @snippet do |f|
+  .form-group
+    %label Title
+    = f.text_field :title, :class => "form-control"
+  .form-group
+    %label Content
+    = f.text_area :content, :class => "form-control", :rows => 8
+  .form-group
+    - if :edit
+      = f.submit action, :class => "btn btn-default"
