@@ -1,11 +1,9 @@
 Feature: Snippets
 
   Scenario:
-    Given a snippet titled "Snippet1" exists
-    And a snippet titled "Snippet2" exists
+    Given a snippet titled "MySnippet" exists
     And I am on the homepage
-    Then I should see "Snippet1"
-    And I should see "Snippet2"
+    Then I should see "MySnippet"
 
   Scenario:
     Given I am on the homepage
