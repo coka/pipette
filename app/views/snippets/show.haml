@@ -6,7 +6,7 @@
         %br/
         - if @snippet.user
           = @snippet.user.username
-      -if user_signed_in? && (@snippet.user_id == current_user.id)
+      -if owned_by_current_user?(@snippet)
         .btn-group.pull-right
           = link_to "Edit", edit_snippet_path(@snippet), :class => "btn btn-default"
           = link_to "Destroy", snippet_path(@snippet), :method => :delete, :class => "btn btn-danger"
