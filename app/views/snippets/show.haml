@@ -20,8 +20,7 @@
   .well#comment_box
     - @comments.each do |comment|
       %div
-        %label= comment.user.username
-        = comment.content
+        = render partial: "comments/comment", :locals => { :comment => comment }
   - if user_signed_in?
     %h3 Join the discussion!
     = form_for [@snippet, @comment], remote: true do |f|
