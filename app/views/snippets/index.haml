@@ -20,6 +20,4 @@
         = snippet.content
       .panel-footer
         - snippet.comments.each do |comment|
-          %div
-            %label= comment.user.username
-            = comment.content
+          = render partial: "comments/comment", :locals => { :comment => comment }
