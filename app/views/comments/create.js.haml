@@ -1,2 +1,2 @@
-$("#comment_box").append('#{escape_javascript(render "comment_div")}');
+$("#comment_box").append('#{escape_javascript(render partial: "comment", :locals => { :comment => @comment })}');
 $("#comment_content").val("");

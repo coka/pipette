@@ -6,7 +6,7 @@
         %br/
         - if @snippet.user
           = @snippet.user.username
-      -if user_signed_in? && (@snippet.user_id == current_user.id)
+      -if owned_by_current_user?(@snippet)
         .btn-group.pull-right
           = link_to "Edit", edit_snippet_path(@snippet), :class => "btn btn-default"
           = link_to "Destroy", snippet_path(@snippet), :method => :delete, :class => "btn btn-danger"
@@ -20,8 +20,7 @@
   .well#comment_box
     - @comments.each do |comment|
       %div
-        %label= comment.user.username
-        = comment.content
+        = render partial: "comments/comment", :locals => { :comment => comment }
   - if user_signed_in?
     %h3 Join the discussion!
     = form_for [@snippet, @comment], remote: true do |f|
@@ -31,11 +30,3 @@
         = f.submit "Post comment", :class => "btn btn-primary"
   - else
     %h3 Sign in to post a comment.
-
-:javascript
-  $("#execute").click(function () {
-    command = $("#command").text();
-    $.post("http://tourette.herokuapp.com", JSON.stringify({"command" : command}), function(response) {
-      $("#output").append("<pre>" + response["output"] + "</pre>");
-    }, "json");
-  });
