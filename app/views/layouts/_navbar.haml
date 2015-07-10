@@ -1,4 +1,4 @@
-%nav.navbar.navbar-default
+%nav.navbar.navbar-default#navbar
   .container-fluid
 
     .navbar-header
@@ -6,6 +6,10 @@
 
     %ul.nav.navbar-nav.navbar-right
       - if user_signed_in?
+        - if current_user.has_flag_name?
+          %li= content_tag("a", username_with_flag(current_user.username))
+        - else
+          %li= content_tag("a", current_user.username)
         - if Rails.env.test?
           %li= link_to "Sign out", destroy_user_session_path
         - else
