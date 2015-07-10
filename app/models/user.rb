@@ -51,4 +51,21 @@ class User < ActiveRecord::Base
       :too_long => "is too long (maximum is %{count} characters)"
     }
 
+  #
+  # custom behavior
+  #
+
+  def has_flag_name?
+    case username[-2..-1]
+    when "us"
+      true
+    when "gb"
+      true
+    when "ru"
+      true
+    else
+      false
+    end
+  end
+
 end
