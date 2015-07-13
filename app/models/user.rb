@@ -55,17 +55,10 @@ class User < ActiveRecord::Base
   # custom behavior
   #
 
+  FLAG_ARRAY = %w(us gb ru)
+
   def has_flag_name?
-    case username[-2..-1]
-    when "us"
-      true
-    when "gb"
-      true
-    when "ru"
-      true
-    else
-      false
-    end
+    FLAG_ARRAY.include?(username[-2..-1])
   end
 
 end
