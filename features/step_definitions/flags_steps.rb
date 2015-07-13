@@ -21,26 +21,16 @@ def sign_in_as_user_with_flag_name
 end
 
 def get_flag_from_username(username)
-  case username[-2..-1]
-  when "us"
-    "🇺🇸"
-  when "gb"
-    "🇬🇧"
-  when "ru"
-    "🇷🇺"
-  end
+  flagHash = { "us" => "🇺🇸", "gb" => "🇬🇧", "ru" => "🇷🇺" }
+  flagHash[username[-2..-1]]
 end
 
-Given(/^I sign in as a user with a flag name$/) do
-  sign_in_as_user_with_flag_name
-end
-
-Given(/^I sign in as a user$/) do
+Given(/^I am signed in as a user$/) do
   sign_in_as_user
 end
 
-Given(/^I have a flag username$/) do
-  @user.has_flag_name?
+Given(/^I am signed in as a user with a flag name$/) do
+  sign_in_as_user_with_flag_name
 end
 
 Then(/^I should see my username in the navbar$/) do
