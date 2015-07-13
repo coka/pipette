@@ -14,5 +14,8 @@
 !/log/.keep
 /tmp
 
-# Ignore third-party code
+# Ignore third-party code.
 vendor/bundle/
+
+# Ignore Vim's swap files.
+*.swp
