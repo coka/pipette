@@ -3,6 +3,7 @@ require "rails_helper"
 describe SnippetsController do
 
   describe "POST create" do
+    login_user
 
     let(:snippet) { double(Snippet).as_null_object }
 

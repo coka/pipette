@@ -5,11 +5,11 @@ class SnippetsController < ApplicationController
   end
 
   def new
-    @snippet = Snippet.new
+    @snippet = current_user.snippets.build
   end
 
   def create
-    @snippet = Snippet.new(params[:snippet])
+    @snippet = current_user.snippets.build(params[:snippet])
     if @snippet.save
       redirect_to :action => "index"
     else
