@@ -39,6 +39,11 @@ describe SnippetsController do
         allow(snippet).to receive(:save).and_return(false)
       end
 
+      it "assigns @snippet" do
+        post :create
+        expect(assigns[:snippet]).to eq(snippet)
+      end
+
       it "renders the new template" do
         post :create
         expect(response).to render_template("new")
