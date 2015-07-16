@@ -132,7 +132,6 @@ describe SnippetsController do
 
     before do
       allow(Snippet).to receive(:find).and_return(snippet)
-      allow(Snippet).to receive(:new).and_return(snippet)
     end
 
     it "assigns @snippet" do
